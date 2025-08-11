@@ -86,11 +86,11 @@ def main():
     unique_users = get_unique_users(path)
     unique_ip = get_unique_ip(path)
     top_failed_users = sort_by_top(get_top_failed_users(path))
-    # print(f"Total attempts: {attempts_login}")
-    # print(f"Total Success Count: {success_login}")
-    # print(f"Total Fail Count: {failure_count}")
-    # print(f"Total Unique Users: {unique_users}")
-    # print(f"Total Unique IP: {unique_ip}")
+    print(f"Total attempts: {attempts_login}")
+    print(f"Total Success Count: {success_login}")
+    print(f"Total Fail Count: {failure_count}")
+    print(f"Total Unique Users: {unique_users}")
+    print(f"Total Unique IP: {unique_ip}")
     print(f"failed users attempts: {top_failed_users}")
 
 
