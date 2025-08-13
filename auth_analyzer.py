@@ -8,14 +8,14 @@ def get_file(path_to_file):
 
 
 def get_total_attempts(file):
-    extract_attempts = get_file(file)
+    extract_attempts = file
     total_attempts = 0
     for row in extract_attempts:
         total_attempts += 1
     return total_attempts
 
 def get_success_count(file):
-    extract_success = get_file(file)
+    extract_success = file
     total_success = 0
     for row in extract_success:
         if row["result"] == "OK":
@@ -23,7 +23,7 @@ def get_success_count(file):
     return total_success
 
 def get_failure_count(file):
-    extract_fail = get_file(file)
+    extract_fail = file
     total_fail = 0
     for row in extract_fail:
         if row["result"] == "FAIL":
@@ -31,7 +31,7 @@ def get_failure_count(file):
     return total_fail
 
 def get_unique_users(file):
-    get_users = get_file(file)
+    get_users = file
     users_logging_in = []
     for row in get_users:
         if row["user"] not in users_logging_in:
@@ -39,7 +39,7 @@ def get_unique_users(file):
     return len(users_logging_in)
 
 def get_unique_ip(file):
-    get_ips = get_file(file)
+    get_ips = file
     ips_attempt = []
     for row in get_ips:
         if row["ip"] not in ips_attempt:
@@ -47,7 +47,7 @@ def get_unique_ip(file):
     return len(ips_attempt)
 
 def get_top_failed_users(file):
-    get_users = get_file(file)
+    get_users = file
     failed_login_attempts = {}
     for row in get_users:
         if row["result"] == "FAIL":
@@ -58,7 +58,7 @@ def get_top_failed_users(file):
     return failed_login_attempts
 
 def get_top_failed_ips(file):
-    get_ips = get_file(file)
+    get_ips = file
     failed_ip_attempts = {}
     for row in get_ips:
         if row["result"] == "FAIL":
@@ -79,13 +79,13 @@ def sort_by_top(dictonary_to_sort):
 #def print_analysis(attempts, success, failure, users, ip, failed, lock, suspicious):
 
 def main():
-    path = "test1.csv"
-    attempts_login = get_total_attempts(path)
-    success_login = get_success_count(path)
-    failure_count = get_failure_count(path)
-    unique_users = get_unique_users(path)
-    unique_ip = get_unique_ip(path)
-    top_failed_users = sort_by_top(get_top_failed_users(path))
+    file = get_file("test1.csv")
+    attempts_login = get_total_attempts(file)
+    success_login = get_success_count(file)
+    failure_count = get_failure_count(file)
+    unique_users = get_unique_users(file)
+    unique_ip = get_unique_ip(file)
+    top_failed_users = sort_by_top(get_top_failed_users(file))
     print(f"Total attempts: {attempts_login}")
     print(f"Total Success Count: {success_login}")
     print(f"Total Fail Count: {failure_count}")
